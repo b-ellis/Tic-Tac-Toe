@@ -1,0 +1,79 @@
+h1{
+	text-align: center;
+}
+.square{
+	text-align: center;
+	padding: 0;
+}
+.board{
+	border-spacing: 0px;
+	position: absolute;
+	left: 485px;
+	top: 150px;
+}
+.tleft{
+	border: 2px solid black;
+	border-left: 0px;
+	border-top: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.tmiddle{
+	border: 2px solid black;
+	border-top: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.tright{
+	border: 2px solid black;
+	border-right: 0px;
+	border-top: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.lcenter{
+	border: 2px solid black;
+	border-left: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.center{
+	border: 2px solid black;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.rcenter{
+	border: 2px solid black;
+	border-right: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.lbottom{
+	border: 2px solid black;
+	border-left: 0px;
+	border-bottom: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.cbottom{
+	border: 2px solid black;
+	border-bottom: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
+.rbottom{
+	border: 2px solid black;
+	border-right: 0px;
+	border-bottom: 0px;
+	height: 6em;
+	width: 6em;
+	padding: 0;
+}
