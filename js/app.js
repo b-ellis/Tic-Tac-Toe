@@ -35,7 +35,7 @@
 	};
 
 	function newGame(){
-		$('.button').click(function(){
+		$('.new').click(function(){
 		})
 	};
 
