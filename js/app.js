@@ -19,25 +19,45 @@
 		[2,4,6]
 	];
 
-	/*var board = []; board[0] = [1,2,3]; board[1] = [4,5,6]; board[2] = [7,8,9];
-	for (var i = 0 ; i < board.length ; i++) { 
-		for(var j = 0 ; j < board[i].length ; j++) { 
-		}
-	}*/
-
 	function startGame(){
 		$('.info').html(Player + " Goes First")
 	};
 
 	function whosturn(){
-		$('.info').html(Player + "'s Turn");
 		changePlayer();
+		$('.info').html(Player + "'s Turn");
 	};
 
 	function newGame(){
-		$('.new').click(function(){
-		})
-	};
+		// new game variable resets
+		Player = "X";
+		chosenSquares["X"] = [];
+		chosenSquares["O"] = [];
+
+		// VERY IMPORTANT -- remove single click event handler for cells from previous game
+		// that have not been clicked.
+		$('.square').unbind();
+
+		startGame();
+		// clear board
+		$('.square').html("");
+
+		// we use bind because jquery .one function can not have it's event handlers unregistered
+		// and we need to unregister when starting a new game to avoid multiple event handler functions
+		// executing and messing up logic.
+		$('.square').bind("click", function(){
+			// to simulate the behavious of .one() function, we unbind the event handler function
+			// directly after the first click -- this makes a cell clickable only once.
+			$(this).unbind();
+
+			$(this).html(Player);
+			if (gamePlay()) {
+					whosturn();
+			} else {
+				newGame();
+			}
+		});
+	}
 
 	function changePlayer(){
 		if (Player === "X"){
@@ -48,35 +68,37 @@
 	};
 
 	function gamePlay(){
+		var output = true;
 		var $square = $(event.currentTarget);
-		var indexOfSquare = $('.board .square').index($square);  		
+		var indexOfSquare = $('.board .square').index($square);
 		var currentPlayerSquares = chosenSquares[Player]
 	  	currentPlayerSquares.push(indexOfSquare);
-	  	whosturn();
 
-  		$.each(winningcombos, function(index, combos){
+  		$.each(winningcombos, function(index, combo){
+
 			var hasAllSquares = true;
 
-			$.each(combos, function(index, square){
+			$.each(combo, function(index, square){
 				if($.inArray(square,currentPlayerSquares) === -1){
 					hasAllSquares = false;
+					return false;
 				}
-			})
+			});
 
 			if(hasAllSquares){
 				$('.info').html(Player + " wins");
+				alert("Player wins! game over !");
+				output = false;
 			}
+
 		});
-		changePlayer();
-	};
+		return output;
+	}
 
 $(document).ready(function(){
+	newGame();
 
-	startGame();
-	$('.square').one("click", function(){
-		$(this).html(Player);
-		whosturn();
-		gamePlay();
+	$('.new').click(function(){
+		newGame();
 	});
-
 });
