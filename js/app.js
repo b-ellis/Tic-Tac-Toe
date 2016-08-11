@@ -19,6 +19,13 @@
 		[2,4,6]
 	];
 
+	function isDraw() {
+		if (chosenSquares["X"].length + chosenSquares["O"].length >= 9) {
+			return true;
+		}
+		return false;
+	}
+
 	function startGame(){
 		$('.info').html(Player + " Goes First")
 	};
@@ -52,7 +59,12 @@
 
 			$(this).html(Player);
 			if (gamePlay()) {
-					whosturn();
+					if (isDraw()) {
+						alert("Game ends in a draw!");
+						newGame();
+					} else {
+						whosturn();
+					}
 			} else {
 				setTimeout(newGame,1000);
 			}
@@ -92,6 +104,7 @@
 				output = false;
 			}
 		});
+
 		return output;
 	}
 
