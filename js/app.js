@@ -60,8 +60,8 @@
 			$(this).html(Player);
 			if (gamePlay()) {
 					if (isDraw()) {
-						alert("Game ends in a draw!");
-						newGame();
+						$(".info").html("Game ends in a draw!");
+						setTimeout(newGame,2000);
 					} else {
 						whosturn();
 					}
