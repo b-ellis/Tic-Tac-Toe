@@ -1,9 +1,9 @@
 h1{
 	text-align: center;
 }
-button{
-	margin-top: 400px;
-    margin-left: 586px;
+.content{
+	margin: 0 auto;
+	text-align: center;
 }
 .square{
 	text-align: center;
@@ -11,9 +11,8 @@ button{
 }
 .board{
 	border-spacing: 0px;
-	position: absolute;
-	left: 485px;
-	top: 150px;
+	margin: 0 auto;
+
 }
 .one{
 	border: 2px solid black;
@@ -80,4 +79,7 @@ button{
 	height: 6em;
 	width: 6em;
 	padding: 0;
+}
+.new{
+	margin: 2em;
 }

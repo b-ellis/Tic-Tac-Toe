@@ -54,7 +54,7 @@
 			if (gamePlay()) {
 					whosturn();
 			} else {
-				newGame();
+				setTimeout(newGame,1000);
 			}
 		});
 	}
@@ -66,6 +66,7 @@
 			Player = "X";
 		};
 	};
+
 
 	function gamePlay(){
 		var output = true;
@@ -86,11 +87,10 @@
 			});
 
 			if(hasAllSquares){
-				$('.info').html(Player + " wins");
-				alert("Player wins! game over !");
+				$('.info').html(Player + " wins!");
+				//alert("Player wins! game over !");
 				output = false;
 			}
-
 		});
 		return output;
 	}
